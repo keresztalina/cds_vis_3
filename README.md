@@ -4,7 +4,7 @@ This assignment is ***Part 3*** of the portfolio exam for ***Visual Analytics S2
 ## 3.1. Contribution
 The initial assignment was created partially in collaboration with other students in the course, also making use of code provided as part of the course (for example the plotting function, which has only been edited to save the produced plot). The final code is my own. Several adjustments have been made since the initial hand-in. 
 
-Here is the link to the GitHub repository containing the code for this assignment: ADD
+Here is the link to the GitHub repository containing the code for this assignment: ```https://github.com/keresztalina/cds_vis_3```
 
 ## 3.2. Assignment description by Ross
 *(**NB!** This description has been edited for brevity. Find the full instructions in ```README_rdkm.md```.)*
@@ -32,6 +32,35 @@ Then, the model is fit to the data and validated on the validation split through
 ### 3.4.1. Prerequisites
 This code was written and executed in the UCloud application's Coder Python interface (version 1.77.3, running Python version 3.9.2). UCloud provides virtual machines with a Linux-based operating system, therefore, the code has been optimized for Linux and may need adjustment for Windows and Mac.
 
+### 3.4.2. Installations
+1. Clone this repository somewhere on your device.
+2. Download the data from https://www.kaggle.com/datasets/validmodel/indo-fashion-dataset. Since the data was already loaded for me on a shared drive, the folders were structured the following way for me:
+
+- 431824
+    - images
+        - metadata
+        - test
+        - train
+        - val
+- Visual
+    - cds_vis_3
+        - src
+        - out
+
+3. Open a terminal and navigate into the ```/cds_vis_3``` folder. Run the following lines in order to install the necessary packages:
+        
+        pip install --upgrade pip
+        python3 -m pip install -r requirements.txt
+        
+### 3.4.3. Run the script
+In order to run the script, make sure your current directory is still the ```/cds_vis_3``` folder. From command line, run:
+
+        python3 src/cnn.py
+        
+After running the script, within the ```/out``` folder, you will find a plot of the history for diagnostics and a classification report.
+        
+## 3.5. Discussion
+The classifier was set to train for 10 epochs. When looking at the plot for training history, it can be seen that the curves for training and validation cross over in the beginnning, meaning there may have been some unrepresentativeness within the validation data. The curves have also not flattened towards the end, so the model could have been trained further, provided there was a mechanism in place to prevent overtraining (e.g. an early stopping function). Overall, the classifier performs significantly better than chance, reaching a mean accuracy of 76%. It performs best for blouses, with an accuracy of 90%, and worst for gowns, with an accuracy of 46%. 
 
 
 
